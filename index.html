@@ -382,11 +382,52 @@
   mix-blend-mode: screen;
 }
 
+.garage-exhaust-smoke {
+  position: fixed;
+  right: 44%;
+  bottom: 18%;
+  width: 120px;
+  height: 70px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.16;
+}
+
+.garage-exhaust-smoke::before,
+.garage-exhaust-smoke::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(210, 180, 255, 0.22) 0%,
+    rgba(168, 85, 247, 0.1) 45%,
+    transparent 75%
+  );
+  filter: blur(16px);
+  animation: exhaustDrift 5.5s ease-in-out infinite;
+}
+
+.garage-exhaust-smoke::before {
+  width: 44px;
+  height: 44px;
+  left: 0;
+  bottom: 6px;
+}
+
+.garage-exhaust-smoke::after {
+  width: 58px;
+  height: 58px;
+  left: 24px;
+  bottom: 18px;
+  animation-delay: 1.8s;
+}
+
 body.specials-mode .garage-wheel-spin,
 body.specials-mode .garage-ground-reflection,
 body.specials-mode .garage-headlight-glow,
 body.specials-mode .garage-car-wrap,
-body.specials-mode .garage-exhaust-smoke {
+body.specials-mode .garage-exhaust-smoke, {
   opacity: 0;
 }
 
