@@ -244,7 +244,6 @@
   transition: transform 0.45s ease, filter 0.45s ease;
   }
 
-/* fake rotating wheel glow rings */
 .garage-wheel-spin {
   position: fixed;
   pointer-events: none;
@@ -255,6 +254,8 @@
   opacity: 0.16;
   mix-blend-mode: screen;
   transition: opacity 0.35s ease, transform 0.45s ease;
+
+  transform: translate(-50%, -50%);
 }
 
 .garage-wheel-spin::before,
@@ -286,13 +287,13 @@
 }
 
 .garage-wheel-front {
-  left: 62.6%;
-  top: 70.3%;
+  left: 58.9%;
+  top: 67.9%;
 }
 
 .garage-wheel-rear {
-  left: 37.6%;
-  top: 70.7%;
+  left: 36.0%;
+  top: 68.3%;
 }
 
 .garage-headlight-glow {
@@ -460,14 +461,14 @@ body.specials-mode .garage-exhaust-smoke, {
     opacity: 0.11;
   }
 
-  .garage-wheel-front {
-  left: 65.1%;
-  top: 73.0%;
+ .garage-wheel-front {
+  left: 61.9%;
+  top: 70.5%;
 }
 
 .garage-wheel-rear {
-  left: 36.2%;
-  top: 73.2%;
+  left: 34.9%;
+  top: 70.9%;
 }
 
   .garage-ground-reflection {
@@ -1700,49 +1701,10 @@ function createTwinkleStar(x = null, y = null) {
   setTimeout(() => star.remove(), 1800);
 }
 
-function animateGarageCarForTab(tab) {
-  const carWrap = document.getElementById("garageCarWrap");
-  if (!carWrap) return;
-
-  const garageTabs = ["performance", "lighting", "paint", "wheels", "body", "misc"];
-  const reactionClasses = [
-    "garage-react-performance",
-    "garage-react-lighting",
-    "garage-react-paint",
-    "garage-react-wheels",
-    "garage-react-body",
-    "garage-react-misc"
-  ];
-
-  carWrap.classList.remove(...reactionClasses);
-
-  if (!garageTabs.includes(tab)) return;
-
-  const classMap = {
-    performance: "garage-react-performance",
-    lighting: "garage-react-lighting",
-    paint: "garage-react-paint",
-    wheels: "garage-react-wheels",
-    body: "garage-react-body",
-    misc: "garage-react-misc"
-  };
-
-  const reactionClass = classMap[tab];
-  if (!reactionClass) return;
-
-  carWrap.classList.add(reactionClass);
-
-  clearTimeout(window.garageCarReactionTimer);
-  window.garageCarReactionTimer = setTimeout(() => {
-    carWrap.classList.remove(reactionClass);
-  }, 550);
-}
-
 function switchTab(event, tab) {
   currentTab = tab;
   document.querySelectorAll(".menu-tab").forEach(btn => btn.classList.remove("active"));
   event.target.classList.add("active");
-  animateGarageCarForTab(tab);
   updateVisualMode();
   displayMenu();
 }
@@ -2075,7 +2037,6 @@ Where horsepower meets happy hour 💜`
 document.getElementById("customerName").addEventListener("input", updateOrderHeader);
 document.getElementById("mechanicName").addEventListener("input", updateMechanicDisplay);
 
-animateGarageCarForTab(currentTab);
 updateOrderHeader();
 updateMechanicDisplay();
 updateOrderMeta();
