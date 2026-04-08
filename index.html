@@ -131,33 +131,34 @@
       animation: metalSweep 11s linear infinite;
     }
 
-.garage-car-img {
+.garage-car-wrap {
   position: fixed;
-
-  top: 54%;
-  left: 50%;
-  transform: translate(-78%, -50%) scale(1.45);
-
-  width: 74%;
+  left: 48%;
+  top: 62%;
+  transform: translate(-50%, -50%);
+  width: 72vw;
   max-width: 1180px;
-
-  opacity: 0.3;
-
+  min-width: 700px;
   pointer-events: none;
   z-index: 1;
+  transition: opacity 0.4s ease;
+}
 
+.garage-car-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.3;
   filter:
     brightness(0.15)
     contrast(1.5)
     drop-shadow(0 0 20px rgba(168, 85, 247, 0.35));
-
   mix-blend-mode: screen;
-
-  transition: opacity 0.4s ease, transform 0.6s ease;
   animation: carFloat 8s ease-in-out infinite;
+  transform-origin: center center;
 }
 
-body.specials-mode .garage-car-img {
+body.specials-mode .garage-car-wrap {
   opacity: 0;
 }
 
@@ -427,9 +428,22 @@ body.specials-mode .menu-item::before {
 }
 
 @keyframes carFloat {
-  0%   { transform: translateY(0px); }
-  50%  { transform: translateY(-6px); }
-  100% { transform: translateY(0px); }
+  0%   { transform: translateY(0px) scale(1.45); }
+  50%  { transform: translateY(-6px) scale(1.45); }
+  100% { transform: translateY(0px) scale(1.45); }
+}
+
+@media (max-width: 768px) {
+  .garage-car-wrap {
+    left: 50%;
+    top: 66%;
+    width: 95vw;
+    min-width: 0;
+  }
+
+  .garage-car-img {
+    opacity: 0.22;
+  }
 }
 
 @keyframes headlightPulse {
@@ -1183,7 +1197,9 @@ body.specials-mode .menu-item::before {
 <div class="bg-smoke-3"></div>
 <div class="bg-smoke-4"></div>
 
-<img src="./car-silhouette.png" alt="" class="garage-car-img" />
+<div class="garage-car-wrap">
+  <img src="./car-silhouette.png" alt="" class="garage-car-img" />
+</div>
 <div class="garage-headlight-glow"></div>
 <div class="garage-exhaust-smoke"></div>
 
