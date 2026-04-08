@@ -130,9 +130,7 @@ body.garage-mode::after {
   content: "";
   position: fixed;
   inset: 0;
-
-  background: url('https://i.imgur.com/8Qf6QyW.png') right 35% center / 55% no-repeat;
-
+  background: url('./car-silhouette.png') right 35% center / 55% no-repeat;
   opacity: 0.08;
   filter: blur(1.2px);
   pointer-events: none;
@@ -1613,15 +1611,7 @@ async function submitOrder() {
     discountAmount,
     total,
     flagged,
-    createdAt: new Date().toISOString()body.garage-mode::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url('REAL-IMAGE-LINK-HERE') center/contain no-repeat;
-  opacity: 0.08;
-  pointer-events: none;
-  z-index: 0;
-}
+    createdAt: new Date().toISOString()
   };
 
   await sendOrderLog(logPayload);
