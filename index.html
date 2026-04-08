@@ -103,7 +103,7 @@
     .metal-sheen {
       z-index: 0;
       overflow: hidden;
-      opacity: 0.6;
+      opacity: 0.75;
       transition: opacity 0.35s ease;
     }
 
@@ -128,7 +128,7 @@
 
     .carbon-fiber {
       z-index: 0;
-      opacity: 0.06;
+      opacity: 0.12;
       background-image:
         linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.03) 75%, transparent 75%, transparent),
         linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.02) 75%, transparent 75%, transparent);
@@ -173,19 +173,18 @@
       100% { opacity: 0; transform: scale(1.05) translateY(-8px); }
     }
 
-    .bg-smoke,
-    .bg-smoke-2,
-    .bg-smoke-3,
-    .bg-smoke-4 {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(78px);
-      pointer-events: none;
-      z-index: 0;
-      animation: floatSmoke 10s ease-in-out infinite;
-      transition: opacity 0.35s ease;
-    }
-
+.bg-smoke,
+.bg-smoke-2,
+.bg-smoke-3,
+.bg-smoke-4 {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(78px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatSmoke 10s ease-in-out infinite;
+  opacity: 0.6;
+}
     .bg-smoke {
       width: 420px;
       height: 420px;
@@ -283,6 +282,24 @@
       0%, 100% { opacity: 0.85; transform: scale(1); filter: drop-shadow(0 0 2px rgba(255, 245, 190, 0.4)); }
       50% { opacity: 1; transform: scale(1.28); filter: drop-shadow(0 0 6px rgba(255, 245, 190, 0.95)); }
     }
+
+body.specials-mode .menu-item::before {
+  animation: none;
+}
+
+@keyframes cardSweep {
+  0% {
+    transform: translateX(-160%) skewX(-18deg);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(160%) skewX(-18deg);
+    opacity: 0.4;
+  }
+}
 
     @keyframes wrapperGlow {
       0%, 100% {
@@ -505,15 +522,23 @@
       overflow: hidden;
     }
 
-    .menu-item::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,0.03) 35%, rgba(255,213,134,0.08) 50%, rgba(255,255,255,0.02) 65%, transparent 80%);
-      transform: translateX(-120%) skewX(-16deg);
-      transition: transform 0.7s ease;
-      pointer-events: none;
-    }
+.menu-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 15%,
+    rgba(255,255,255,0.04) 30%,
+    rgba(255,213,134,0.12) 45%,
+    rgba(255,255,255,0.04) 60%,
+    transparent 75%
+  );
+  transform: translateX(-140%) skewX(-18deg);
+  transition: transform 0.9s ease;
+  pointer-events: none;
+  animation: cardSweep 8s linear infinite;
+}
 
     .menu-item:hover {
       transform: translateY(-2px) translateX(4px) scale(1.008);
@@ -525,7 +550,7 @@
         inset 0 0 10px rgba(255, 255, 255, 0.03);
     }
 
-    .menu-item:hover::before { transform: translateX(120%) skewX(-16deg); }
+    .menu-item:hover::before { transform: translateX(140%) skewX(-18deg); }
 
     .raffle-item { position: relative; overflow: hidden; }
     .raffle-item:hover { transform: translateY(-2px) translateX(4px) scale(1.01); }
@@ -1111,7 +1136,7 @@ const menuData = {
     { id: "respray", name: "Respray", price: 1300.00, badges: ["Paint", "Custom Color"], desc: "Full exterior respray in custom color." }
   ],
   wheels: [
-    { id: "rims", name: "Rims", price: 3200.00, badges: ["Wheels", "Custom"], desc: "Installs custom rim set." },
+    { id: "wheels", name: "Wheels", price: 3200.00, badges: ["Wheels", "Custom"], desc: "Installs custom wheel set." },
     { id: "tire-smoke", name: "Tire Smoke", price: 2000.00, badges: ["Wheels", "Visual Effect"], desc: "Adds colored tire smoke effect." }
   ],
   body: [
