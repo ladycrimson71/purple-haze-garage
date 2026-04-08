@@ -136,11 +136,10 @@
   inset: 0;
   pointer-events: none;
   z-index: 1;
-
-  background: url('./car-silhouette.png') center / 60% no-repeat;
-
-  opacity: 0.8;
-  filter: none;
+  opacity: 0.55;
+  background: url('./car-silhouette.png') right 18% center / 46% no-repeat;
+  filter: grayscale(1) invert(1) brightness(1.35) contrast(1.2);
+  transition: opacity 0.35s ease;
 }
 
 body.specials-mode .garage-car {
