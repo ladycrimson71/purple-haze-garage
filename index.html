@@ -242,11 +242,7 @@
   animation: carFloat 8s ease-in-out infinite;
   transform-origin: center center;
   transition: transform 0.45s ease, filter 0.45s ease;
-  transform:
-    translate(var(--car-shift-x), var(--car-shift-y))
-    rotate(var(--car-tilt))
-    scale(calc(1.45 * var(--car-scale)));
-}
+  }
 
 /* fake rotating wheel glow rings */
 .garage-wheel-spin {
@@ -625,9 +621,15 @@ body.specials-mode .menu-item::before {
 }
 
 @keyframes carFloat {
-  0%   { transform: translateY(0px) scale(1.45); }
-  50%  { transform: translateY(-6px) scale(1.45); }
-  100% { transform: translateY(0px) scale(1.45); }
+  0% {
+    transform: translate(var(--car-shift-x), calc(var(--car-shift-y) + 0px)) rotate(var(--car-tilt)) scale(calc(1.45 * var(--car-scale)));
+  }
+  50% {
+    transform: translate(var(--car-shift-x), calc(var(--car-shift-y) - 6px)) rotate(var(--car-tilt)) scale(calc(1.45 * var(--car-scale)));
+  }
+  100% {
+    transform: translate(var(--car-shift-x), calc(var(--car-shift-y) + 0px)) rotate(var(--car-tilt)) scale(calc(1.45 * var(--car-scale)));
+  }
 }
 
 @media (max-width: 768px) {
