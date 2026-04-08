@@ -33,16 +33,18 @@
         radial-gradient(circle at 50% 80%, var(--bg-3), transparent 60%),
         linear-gradient(135deg, #05000a, #120022);
       position: relative;
-      transition: background 0.45s ease;
-    }
+      transition: background 0.45s ease, filter 0.45s ease;
+}
 
-    body.garage-mode {
-      background:
-        radial-gradient(circle at 16% 18%, rgba(138,43,226,0.32), transparent 36%),
-        radial-gradient(circle at 84% 22%, rgba(186,85,211,0.18), transparent 34%),
-        radial-gradient(circle at 50% 82%, rgba(70,0,120,0.30), transparent 52%),
-        linear-gradient(135deg, #06050c, #14051e 40%, #100817 100%);
-    }
+   body.garage-mode {
+  background:
+    radial-gradient(circle at 16% 18%, rgba(138,43,226,0.32), transparent 36%),
+    radial-gradient(circle at 84% 22%, rgba(186,85,211,0.18), transparent 34%),
+    radial-gradient(circle at 50% 82%, rgba(70,0,120,0.30), transparent 52%),
+    linear-gradient(135deg, #06050c, #14051e 40%, #100817 100%);
+
+  filter: contrast(1.05) brightness(0.95);
+}
 
     body.specials-mode {
       background:
@@ -124,11 +126,20 @@
       animation: metalSweep 11s linear infinite;
     }
 
+body.garage-mode::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://i.imgur.com/your-car-silhouette.png') center/cover no-repeat;
+  opacity: 0.04; /* VERY faint */
+  pointer-events: none;
+  z-index: 0;
+}
+
     body.specials-mode .metal-sheen { opacity: 0.12; }
 
-    .carbon-fiber {
-      z-index: 0;
-      opacity: 0.12;
+    body.garage-mode .carbon-fiber {
+  opacity: 0.22;
       background-image:
         linear-gradient(45deg, rgba(255,255,255,0.03) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.03) 75%, transparent 75%, transparent),
         linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.02) 75%, transparent 75%, transparent);
