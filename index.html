@@ -286,13 +286,13 @@
 }
 
 .garage-wheel-front {
-  left: 60.8%;
-  top: 68.7%;
+  left: 61.6%;
+  top: 69.2%;
 }
 
 .garage-wheel-rear {
-  left: 35.9%;
-  top: 69.5%;
+  left: 36.7%;
+  top: 69.8%;
 }
 
 .garage-headlight-glow {
@@ -420,14 +420,14 @@ body.specials-mode .garage-exhaust-smoke {
   }
 
   .garage-wheel-front {
-    left: 63.5%;
-    top: 71.2%;
-  }
+  left: 64.2%;
+  top: 72.0%;
+}
 
-  .garage-wheel-rear {
-    left: 34.5%;
-    top: 71.8%;
-  }
+.garage-wheel-rear {
+  left: 35.4%;
+  top: 72.4%;
+}
 
   .garage-ground-reflection {
     width: 220px;
@@ -648,11 +648,11 @@ body.specials-mode .menu-item::before {
 @keyframes headlightPulse {
   0%, 100% {
     opacity: 0.12;
-    transform: rotate(-8deg) scale(1);
+    transform: rotate(-8deg) translateX(var(--car-shift-x)) translateY(var(--car-shift-y)) scale(1);
   }
   50% {
     opacity: 0.22;
-    transform: rotate(-8deg) scale(1.05);
+    transform: rotate(-8deg) translateX(var(--car-shift-x)) translateY(var(--car-shift-y)) scale(1.05);
   }
 }
 
