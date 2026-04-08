@@ -133,23 +133,26 @@
 
 .garage-car-img {
   position: fixed;
-  right: 6%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 42%;
-  max-width: 760px;
+  right: 4%;
+  bottom: 6%;
+  width: 38%;
+  max-width: 720px;
 
-  opacity: 0.18;
+  opacity: 0.14;
+
   pointer-events: none;
-  z-index: 2;
+  z-index: 1;
 
   filter:
     invert(1)
-    brightness(1.4)
+    brightness(1.6)
     contrast(1.2)
+    drop-shadow(0 0 12px rgba(168, 85, 247, 0.25))
     blur(0.3px);
 
   mix-blend-mode: screen;
+
+  transition: opacity 0.4s ease, transform 0.6s ease;
 }
 
 body.specials-mode .garage-car-img {
@@ -330,6 +333,15 @@ body.specials-mode .menu-item::before {
     transform: translateX(160%) skewX(-18deg);
     opacity: 0.4;
   }
+
+@keyframes carFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.garage-car-img {
+  animation: carFloat 8s ease-in-out infinite;
 }
 
     @keyframes wrapperGlow {
