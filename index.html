@@ -131,18 +131,28 @@
       animation: metalSweep 11s linear infinite;
     }
 
-.garage-car {
+.garage-car-img {
   position: fixed;
-  inset: 0;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42%;
+  max-width: 760px;
+
+  opacity: 0.18;
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.55;
-  background: url('./car-silhouette.png') right 18% center / 46% no-repeat;
-  filter: grayscale(1) invert(1) brightness(1.35) contrast(1.2);
-  transition: opacity 0.35s ease;
+  z-index: 2;
+
+  filter:
+    invert(1)
+    brightness(1.4)
+    contrast(1.2)
+    blur(0.3px);
+
+  mix-blend-mode: screen;
 }
 
-body.specials-mode .garage-car {
+body.specials-mode .garage-car-img {
   opacity: 0;
 }
 
@@ -1048,7 +1058,7 @@ body.specials-mode .menu-item::before {
 <div class="bg-smoke-3"></div>
 <div class="bg-smoke-4"></div>
 
-<div class="garage-car"></div>
+<img src="./car-silhouette.png" alt="" class="garage-car-img" />
 
 <div class="wrapper">
     <div class="header">
