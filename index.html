@@ -55,13 +55,18 @@
     }
 
     .stars,
-    .galaxy-shimmer,
-    .metal-sheen,
-    .carbon-fiber {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-    }
+.galaxy-shimmer,
+.metal-sheen,
+.carbon-fiber {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.stars { z-index: 0; }
+.galaxy-shimmer { z-index: 0; }
+.metal-sheen { z-index: 0; }
+.carbon-fiber { z-index: 0; }
 
     .stars { z-index: 0; opacity: 0.08; transition: opacity 0.35s ease; }
     .stars::before {
@@ -126,17 +131,22 @@
       animation: metalSweep 11s linear infinite;
     }
 
-body.garage-mode::after {
-  content: "";
+.garage-car {
   position: fixed;
   inset: 0;
-  background: url('./car-silhouette.png') right 35% center / 55% no-repeat;
-  opacity: 0.08;
-  filter: blur(1.2px);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
+  opacity: 0.32;
+  background: url('./car-silhouette.png') right 28% center / 50% no-repeat;
+  filter: grayscale(1) brightness(2.6) contrast(1.35);
+  transition: opacity 0.35s ease;
 }
-    body.specials-mode .metal-sheen { opacity: 0.12; }
+
+body.specials-mode .garage-car {
+  opacity: 0;
+}
+
+body.specials-mode .metal-sheen { opacity: 0.12; }
 
     body.garage-mode .carbon-fiber {
   opacity: 0.22;
@@ -1034,11 +1044,13 @@ body.specials-mode .menu-item::before {
   <div class="metal-sheen"></div>
   <div class="carbon-fiber"></div>
   <div class="bg-smoke"></div>
-  <div class="bg-smoke-2"></div>
-  <div class="bg-smoke-3"></div>
-  <div class="bg-smoke-4"></div>
+<div class="bg-smoke-2"></div>
+<div class="bg-smoke-3"></div>
+<div class="bg-smoke-4"></div>
 
-  <div class="wrapper">
+<div class="garage-car"></div>
+
+<div class="wrapper">
     <div class="header">
       <div class="header-title">💜 Purple Haze Garage 💜</div>
       <div class="header-subtitle">Where horsepower meets happy hour</div>
