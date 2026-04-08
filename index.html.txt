@@ -1084,7 +1084,7 @@
   </div>
 
 <script>
-const BACKEND_URL = "haven't set up yet";
+const BACKEND_URL = "https://purple-haze-garage-worker.yourname.workers.dev";
 const MAX_EMPLOYEE_DISCOUNT = 15;
 const OWNER_PASSWORD = "NoReturn22";
 
