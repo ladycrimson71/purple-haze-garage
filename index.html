@@ -156,42 +156,6 @@
     filter 0.45s ease;
 }
 
-.garage-car-wrap.garage-react-performance {
-  --car-shift-x: -10px;
-  --car-shift-y: -2px;
-  --car-tilt: -0.6deg;
-}
-
-.garage-car-wrap.garage-react-lighting {
-  --car-shift-x: 10px;
-  --car-shift-y: -4px;
-  --car-tilt: 0.6deg;
-}
-
-.garage-car-wrap.garage-react-paint {
-  --car-shift-x: 0px;
-  --car-shift-y: -8px;
-  --car-tilt: 0deg;
-}
-
-.garage-car-wrap.garage-react-wheels {
-  --car-shift-x: 6px;
-  --car-shift-y: 2px;
-  --car-tilt: 0.35deg;
-}
-
-.garage-car-wrap.garage-react-body {
-  --car-shift-x: -6px;
-  --car-shift-y: 1px;
-  --car-tilt: -0.35deg;
-}
-
-.garage-car-wrap.garage-react-misc {
-  --car-shift-x: 8px;
-  --car-shift-y: 0px;
-  --car-tilt: 0.25deg;
-}
-
 .garage-ground-reflection {
   position: absolute;
   left: 56%;
@@ -1731,7 +1695,6 @@ function switchTab(event, tab) {
   event.target.classList.add("active");
   updateVisualMode();
   displayMenu();
-  updateGarageReactiveState();
 }
 
 function toggleAccessibilityMode() {
@@ -2062,36 +2025,12 @@ Where horsepower meets happy hour 💜`
 document.getElementById("customerName").addEventListener("input", updateOrderHeader);
 document.getElementById("mechanicName").addEventListener("input", updateMechanicDisplay);
 
-function updateGarageReactiveState() {
-  const wrap = document.getElementById("garageCarWrap");
-  if (!wrap) return;
-
-  wrap.classList.remove(
-    "garage-react-performance",
-    "garage-react-lighting",
-    "garage-react-paint",
-    "garage-react-wheels",
-    "garage-react-body",
-    "garage-react-misc"
-  );
-
-  if (currentTab === "performance") wrap.classList.add("garage-react-performance");
-  if (currentTab === "lighting") wrap.classList.add("garage-react-lighting");
-  if (currentTab === "paint") wrap.classList.add("garage-react-paint");
-  if (currentTab === "wheels") wrap.classList.add("garage-react-wheels");
-  if (currentTab === "body") wrap.classList.add("garage-react-body");
-  if (currentTab === "misc") wrap.classList.add("garage-react-misc");
-}
-
 updateOrderHeader();
 updateMechanicDisplay();
 updateOrderMeta();
 updateVisualMode();
 displayMenu();
-updateGarageReactiveState();
 
-window.addEventListener("load", updateGarageReactiveState);
-window.addEventListener("resize", updateGarageReactiveState);
 </script>
 </body>
 </html>
