@@ -309,69 +309,98 @@
 .garage-headlight-glow {
   position: absolute;
   left: 12%;
-  top: 55.5%;
-  width: 220px;
-  height: 58px;
+  top: 57%;
+  width: 240px;
+  height: 60px;
   pointer-events: none;
-  z-index: 3;
+  z-index: 4;
   border-radius: 999px;
-  opacity: 0.62;
+  opacity: 0.85;
   background: radial-gradient(
-    ellipse at center,
-    rgba(235, 205, 255, 1) 0%,
-    rgba(168, 85, 247, 0.62) 34%,
-    rgba(168, 85, 247, 0.16) 68%,
+    ellipse at 18% 50%,
+    rgba(255,255,255,0.98) 0%,
+    rgba(245,225,255,0.95) 10%,
+    rgba(210,170,255,0.75) 28%,
+    rgba(168,85,247,0.22) 52%,
     transparent 100%
   );
-  filter: blur(14px);
+  filter: blur(10px);
   transform: translate(-50%, -50%) rotate(-8deg);
-  animation: headlightPulse 3.2s ease-in-out infinite;
+  animation: headlightPulse 2.4s ease-in-out infinite;
   mix-blend-mode: screen;
 }
 
 .garage-headlight-glow::before {
   content: "";
   position: absolute;
-  left: -6px;
-  top: 5px;
-  width: 62px;
-  height: 26px;
+  left: -8px;
+  top: 50%;
+  width: 54px;
+  height: 24px;
+  transform: translateY(-50%);
   border-radius: 999px;
   background: radial-gradient(
     ellipse at center,
-    rgba(235, 205, 255, 0.95) 0%,
-    rgba(168, 85, 247, 0.34) 58%,
+    rgba(255,255,255,1) 0%,
+    rgba(245,230,255,0.95) 35%,
+    rgba(210,170,255,0.45) 70%,
     transparent 100%
   );
-  filter: blur(7px);
+  filter: blur(4px);
+  box-shadow:
+    0 0 10px rgba(255,255,255,0.7),
+    0 0 24px rgba(210,170,255,0.4);
 }
 
 .garage-headlight-glow::after {
   content: "";
   position: absolute;
-  left: 42%;
+  left: 18%;
   top: 50%;
-  width: 180px;
-  height: 22px;
-  transform: translateY(-50%) skewX(-20deg);
+  width: 220px;
+  height: 26px;
+  transform: translateY(-50%) skewX(-18deg);
+  border-radius: 999px;
   background: linear-gradient(
     90deg,
-    rgba(225, 190, 255, 0.34) 0%,
-    rgba(168, 85, 247, 0.12) 46%,
+    rgba(255,255,255,0.42) 0%,
+    rgba(225,190,255,0.28) 18%,
+    rgba(168,85,247,0.12) 42%,
+    rgba(168,85,247,0.04) 62%,
     transparent 100%
   );
-  filter: blur(10px);
+  filter: blur(8px);
+}
+
+.garage-headlight-glow-beam {
+  position: absolute;
+  left: 97%;
+  top: 51%;
+  width: 320px;
+  height: 90px;
+  pointer-events: none;
+  z-index: 3;
+  transform: translate(-50%, -50%) skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.16) 0%,
+    rgba(225,190,255,0.10) 20%,
+    rgba(168,85,247,0.04) 48%,
+    transparent 100%
+  );
+  filter: blur(16px);
+  mix-blend-mode: screen;
 }
 
 .garage-car-img {
   display: block;
   width: 100%;
   height: auto;
-  opacity: 0.55;
+  opacity: 0.75;
   filter:
-    brightness(0.36)
-    contrast(1.85)
-    drop-shadow(0 0 24px rgba(168, 85, 247, 0.34));
+    brightness(0.6)
+    contrast(1.6)
+    drop-shadow(0 0 28px rgba(168, 85, 247, 0.45));
   mix-blend-mode: screen;
   animation: carFloat 8s ease-in-out infinite;
   transform-origin: center center;
@@ -644,12 +673,14 @@ body.specials-mode .menu-item::before {
 
 @keyframes headlightPulse {
   0%, 100% {
-    opacity: 0.30;
+    opacity: 0.72;
     transform: translate(-50%, -50%) rotate(-8deg) scale(1);
+    filter: blur(10px);
   }
   50% {
-    opacity: 0.54;
-    transform: translate(-50%, -50%) rotate(-8deg) scale(1.1);
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-8deg) scale(1.06);
+    filter: blur(12px);
   }
 }
 
@@ -1400,6 +1431,7 @@ body.specials-mode .menu-item::before {
   <div class="garage-wheel-spin garage-wheel-front"></div>
   <div class="garage-wheel-spin garage-wheel-rear"></div>
   <div class="garage-headlight-glow"></div>
+  <div class="garage-headlight-glow-beam"></div>
 </div>
 <div class="wrapper">
 
