@@ -288,6 +288,16 @@
   z-index: 1;
 }
 
+.garage-wheel-front {
+  width: 105px;
+  height: 105px;
+}
+
+.garage-wheel-rear {
+  width: 95px;
+  height: 95px;
+}
+
 .garage-wheel-spin {
   position: absolute;
   width: 54px;
@@ -324,7 +334,7 @@
 }
 
 .garage-wheel-spin::after {
-  inset: 9px;
+  inset: 14px;
   border: 1px solid rgba(210, 170, 255, 0.22);
   box-shadow:
     0 0 12px rgba(168, 85, 247, 0.18),
@@ -436,20 +446,9 @@ body.specials-mode .garage-car-wrap {
     opacity: 0.22;
   }
 
-  .garage-wheel-front {
-  left: 64.1%;
-  top: 72.6%;
-}
-
-.garage-wheel-rear {
-  left: 36.4%;
-  top: 71.7%;
-}
-
-.garage-wheel-spin {
-  width: 36px;
-  height: 36px;
-}
+  .garage-wheel-spin {
+    display: none;
+  }
 
   .garage-ground-reflection {
     width: 52%;
