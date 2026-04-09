@@ -165,7 +165,7 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.2;
+  opacity: 0.34;
   border-radius: 50%;
   background:
     radial-gradient(
@@ -192,7 +192,7 @@
   height: 70px;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.16;
+  opacity: 0.28;
 }
 
 .garage-exhaust-smoke::before,
@@ -275,11 +275,11 @@
   display: block;
   width: 100%;
   height: auto;
-  opacity: 0.3;
+  opacity: 0.42;
   filter:
-    brightness(0.15)
-    contrast(1.5)
-    drop-shadow(0 0 20px rgba(168, 85, 247, 0.35));
+    brightness(0.28)
+    contrast(1.75)
+    drop-shadow(0 0 24px rgba(168, 85, 247, 0.45));
   mix-blend-mode: screen;
   animation: carFloat 8s ease-in-out infinite;
   transform-origin: center center;
@@ -295,7 +295,7 @@
   pointer-events: none;
   z-index: 3;
   border-radius: 50%;
-  opacity: 0.28;
+  opacity: 0.58;
   mix-blend-mode: screen;
   transform: translate(-50%, -50%);
 }
@@ -327,14 +327,14 @@
     repeating-conic-gradient(
       from 0deg,
       rgba(255,255,255,0) 0deg 22deg,
-      rgba(210,170,255,0.95) 22deg 34deg,
+      rgba(210,170,255,1) 22deg 34deg,
       rgba(255,255,255,0) 34deg 60deg
     );
-  filter: blur(1px);
+  filter: blur(0.8px);
   animation: wheelTurn 1.3s linear infinite;
   box-shadow:
-    0 0 10px rgba(168, 85, 247, 0.24),
-    0 0 18px rgba(210, 170, 255, 0.12);
+    0 0 14px rgba(168, 85, 247, 0.34),
+    0 0 24px rgba(210, 170, 255, 0.2);
 }
 
 .garage-wheel-spin::after {
@@ -364,7 +364,7 @@
   pointer-events: none;
   z-index: 3;
   border-radius: 999px;
-  opacity: 0.16;
+  opacity: 0.3;
   background: radial-gradient(
     ellipse at center,
     rgba(210, 170, 255, 0.95) 0%,
@@ -680,12 +680,12 @@ body.specials-mode .menu-item::before {
 
 @keyframes headlightPulse {
   0%, 100% {
-    opacity: 0.12;
-    transform: rotate(-8deg) translateX(var(--car-shift-x)) translateY(var(--car-shift-y)) scale(1);
+    opacity: 0.22;
+    transform: translate(-50%, -50%) rotate(-8deg) scale(1);
   }
   50% {
-    opacity: 0.22;
-    transform: rotate(-8deg) translateX(var(--car-shift-x)) translateY(var(--car-shift-y)) scale(1.05);
+    opacity: 0.38;
+    transform: translate(-50%, -50%) rotate(-8deg) scale(1.08);
   }
 }
 
