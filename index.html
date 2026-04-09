@@ -309,8 +309,8 @@
 .garage-headlight-glow {
   position: absolute;
   left: 12%;
-  top: 52%;
-  width: 240px;
+  top: 57%;
+  width: 440px;
   height: 60px;
   pointer-events: none;
   z-index: 4;
@@ -355,27 +355,51 @@
 .garage-headlight-glow::after {
   content: "";
   position: absolute;
-  left: 18%;
+  left: 20%;
   top: 50%;
-  width: 220px;
-  height: 26px;
+  width: 400px;
+  height: 40px;
   transform: translateY(-50%) skewX(-18deg);
   border-radius: 999px;
   background: linear-gradient(
     90deg,
-    rgba(255,255,255,0.42) 0%,
-    rgba(225,190,255,0.28) 18%,
-    rgba(168,85,247,0.12) 42%,
-    rgba(168,85,247,0.04) 62%,
+    rgba(255,255,255,0.45) 0%,
+    rgba(225,190,255,0.25) 20%,
+    rgba(168,85,247,0.12) 45%,
+    rgba(168,85,247,0.04) 65%,
     transparent 100%
   );
-  filter: blur(8px);
+  filter: blur(10px);
+}
+
+.garage-headlight-glow-secondary {
+  position: absolute;
+  left: 95%;
+  top: 54%;
+  width: 90px;
+  height: 28px;
+  pointer-events: none;
+  z-index: 4;
+  border-radius: 999px;
+  opacity: 0.9;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255,255,255,1) 0%,
+    rgba(225,190,255,0.85) 40%,
+    rgba(168,85,247,0.25) 70%,
+    transparent 100%
+  );
+
+  filter: blur(6px);
+  transform: translate(-50%, -50%) rotate(-8deg);
+  mix-blend-mode: screen;
 }
 
 .garage-headlight-glow-beam {
   position: absolute;
   left: 97%;
-  top: 52%;
+  top: 51%;
   width: 320px;
   height: 90px;
   pointer-events: none;
@@ -1431,6 +1455,7 @@ body.specials-mode .menu-item::before {
   <div class="garage-wheel-spin garage-wheel-front"></div>
   <div class="garage-wheel-spin garage-wheel-rear"></div>
   <div class="garage-headlight-glow"></div>
+  <div class="garage-headlight-glow-secondary"></div>
   <div class="garage-headlight-glow-beam"></div>
 </div>
 <div class="wrapper">
