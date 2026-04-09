@@ -135,20 +135,25 @@
   position: fixed;
   left: 53%;
   top: 60%;
-  transform: translate(-50%, -50%);
   width: 78vw;
   max-width: 1180px;
   min-width: 700px;
   pointer-events: none;
   z-index: 1;
+
+  --car-shift-x: 0px;
+  --car-shift-y: 0px;
+  --car-tilt: 0deg;
+
+  transform:
+    translate(-50%, -50%)
+    translate(var(--car-shift-x), var(--car-shift-y))
+    rotate(var(--car-tilt));
+
   transition:
     opacity 0.4s ease,
     transform 0.45s ease,
     filter 0.45s ease;
-  --car-shift-x: 0px;
-  --car-shift-y: 0px;
-  --car-tilt: 0deg;
-  --car-scale: 1;
 }
 
 .garage-car-wrap.garage-react-performance {
@@ -187,182 +192,16 @@
   --car-tilt: 0.25deg;
 }
 
-.garage-car-wrap::before {
-  content: "";
-  position: absolute;
-  left: 16%;
-  right: 14%;
-  bottom: 6%;
-  height: 42px;
-  border-radius: 50%;
-  background:
-    radial-gradient(ellipse at center,
-      rgba(168, 85, 247, 0.22) 0%,
-      rgba(168, 85, 247, 0.12) 35%,
-      rgba(110, 35, 180, 0.05) 60%,
-      transparent 100%);
-  filter: blur(18px);
-  opacity: 0.6;
-  transform: translateX(var(--car-shift-x)) scaleX(0.95);
-  transition: transform 0.45s ease, opacity 0.35s ease;
-}
-
-.garage-car-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 10% 18% 18% 18%;
-  background:
-    linear-gradient(
-      102deg,
-      transparent 0%,
-      transparent 28%,
-      rgba(255,255,255,0.02) 35%,
-      rgba(255,255,255,0.14) 43%,
-      rgba(255,255,255,0.03) 50%,
-      transparent 58%,
-      transparent 100%
-    );
-  mix-blend-mode: screen;
-  opacity: 0.45;
-  transform: translateX(-140%) skewX(-18deg);
-  animation: carMetallicSweep 7.5s linear infinite;
-  filter: blur(2px);
-}
-
-.garage-car-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  opacity: 0.3;
-  filter:
-    brightness(0.15)
-    contrast(1.5)
-    drop-shadow(0 0 20px rgba(168, 85, 247, 0.35));
-  mix-blend-mode: screen;
-  animation: carFloat 8s ease-in-out infinite;
-  transform-origin: center center;
-  transition: transform 0.45s ease, filter 0.45s ease;
-  }
-
-.garage-wheel-spin {
-  position: fixed;
-  pointer-events: none;
-  z-index: 2;
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  opacity: 0.16;
-  mix-blend-mode: screen;
-  transition: opacity 0.35s ease, transform 0.45s ease;
-
-  transform: translate(-50%, -50%);
-}
-
-.garage-wheel-spin::before,
-.garage-wheel-spin::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-}
-
-.garage-wheel-spin::before {
-  background:
-    repeating-conic-gradient(
-      from 0deg,
-      rgba(255,255,255,0.0) 0deg 24deg,
-      rgba(210,170,255,0.95) 24deg 34deg,
-      rgba(255,255,255,0.0) 34deg 58deg
-    );
-  filter: blur(1.2px);
-  animation: wheelTurn 1.7s linear infinite;
-}
-
-.garage-wheel-spin::after {
-  inset: 10px;
-  border: 1px solid rgba(210, 170, 255, 0.2);
-  box-shadow:
-    0 0 12px rgba(168, 85, 247, 0.18),
-    inset 0 0 10px rgba(255,255,255,0.04);
-}
-
-.garage-wheel-front {
-  width: 58px;
-  height: 58px;
-}
-
-.garage-wheel-rear {
-  width: 52px;
-  height: 52px;
-}
-
-.garage-headlight-glow {
-  position: fixed;
-  right: 31.5%;
-  bottom: 28%;
-  width: 90px;
-  height: 26px;
-  pointer-events: none;
-  z-index: 2;
-  border-radius: 999px;
-  opacity: 0.16;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(210, 170, 255, 0.95) 0%,
-    rgba(168, 85, 247, 0.45) 38%,
-    rgba(168, 85, 247, 0.12) 70%,
-    transparent 100%
-  );
-  filter: blur(10px);
-  transform: rotate(-8deg) translateX(var(--car-shift-x)) translateY(var(--car-shift-y));
-  animation: headlightPulse 3.2s ease-in-out infinite;
-  mix-blend-mode: screen;
-  transition: transform 0.45s ease, opacity 0.35s ease;
-}
-
-.garage-headlight-glow::before {
-  content: "";
-  position: absolute;
-  left: -8px;
-  top: 2px;
-  width: 46px;
-  height: 20px;
-  border-radius: 999px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(215, 185, 255, 0.85) 0%,
-    rgba(168, 85, 247, 0.28) 55%,
-    transparent 100%
-  );
-  filter: blur(6px);
-}
-
-.garage-headlight-glow::after {
-  content: "";
-  position: absolute;
-  left: 72%;
-  top: 50%;
-  width: 140px;
-  height: 18px;
-  transform: translateY(-50%) skewX(-20deg);
-  background: linear-gradient(
-    90deg,
-    rgba(210, 170, 255, 0.22) 0%,
-    rgba(168, 85, 247, 0.1) 45%,
-    transparent 100%
-  );
-  filter: blur(8px);
-}
-
 .garage-ground-reflection {
-  position: fixed;
-  right: 20.5%;
-  bottom: 18.3%;
-  width: 320px;
-  height: 55px;
+  position: absolute;
+  left: 56%;
+  top: 79%;
+  width: 42%;
+  height: 7%;
+  transform: translate(-50%, -50%);
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.18;
+  z-index: 0;
+  opacity: 0.2;
   border-radius: 50%;
   background:
     radial-gradient(
@@ -378,15 +217,13 @@
       transparent 70%
     );
   filter: blur(16px);
-  transform: translateX(var(--car-shift-x)) translateY(calc(var(--car-shift-y) * 0.3));
-  transition: transform 0.45s ease, opacity 0.35s ease;
   mix-blend-mode: screen;
 }
 
 .garage-exhaust-smoke {
-  position: fixed;
-  right: 44%;
-  bottom: 18%;
+  position: absolute;
+  left: 20%;
+  top: 66%;
   width: 120px;
   height: 70px;
   pointer-events: none;
@@ -424,12 +261,243 @@
   animation-delay: 1.8s;
 }
 
-body.specials-mode .garage-wheel-spin,
-body.specials-mode .garage-ground-reflection,
-body.specials-mode .garage-headlight-glow,
-body.specials-mode .garage-car-wrap,
-body.specials-mode .garage-exhaust-smoke {
+.garage-car-wrap::before {
+  content: "";
+  position: absolute;
+  left: 16%;
+  right: 14%;
+  bottom: 6%;
+  height: 42px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(168, 85, 247, 0.22) 0%,
+      rgba(168, 85, 247, 0.12) 35%,
+      rgba(110, 35, 180, 0.05) 60%,
+      transparent 100%
+    );
+  filter: blur(18px);
+  opacity: 0.6;
+  transform: scaleX(0.95);
+  transition: transform 0.45s ease, opacity 0.35s ease;
+}
+
+.garage-car-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 10% 18% 18% 18%;
+  background:
+    linear-gradient(
+      102deg,
+      transparent 0%,
+      transparent 28%,
+      rgba(255,255,255,0.02) 35%,
+      rgba(255,255,255,0.14) 43%,
+      rgba(255,255,255,0.03) 50%,
+      transparent 58%,
+      transparent 100%
+    );
+  mix-blend-mode: screen;
+  opacity: 0.45;
+  transform: translateX(-140%) skewX(-18deg);
+  animation: carMetallicSweep 7.5s linear infinite;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.garage-car-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.3;
+  filter:
+    brightness(0.15)
+    contrast(1.5)
+    drop-shadow(0 0 20px rgba(168, 85, 247, 0.35));
+  mix-blend-mode: screen;
+  animation: carFloat 8s ease-in-out infinite;
+  transform-origin: center center;
+  transition: transform 0.45s ease, filter 0.45s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.garage-wheel-spin {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 50%;
+  opacity: 0.28;
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+}
+
+.garage-wheel-spin::before,
+.garage-wheel-spin::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.garage-wheel-spin::before {
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(255,255,255,0) 0deg 22deg,
+      rgba(210,170,255,0.95) 22deg 34deg,
+      rgba(255,255,255,0) 34deg 60deg
+    );
+  filter: blur(1px);
+  animation: wheelTurn 1.3s linear infinite;
+  box-shadow:
+    0 0 10px rgba(168, 85, 247, 0.24),
+    0 0 18px rgba(210, 170, 255, 0.12);
+}
+
+.garage-wheel-spin::after {
+  inset: 9px;
+  border: 1px solid rgba(210, 170, 255, 0.22);
+  box-shadow:
+    0 0 12px rgba(168, 85, 247, 0.18),
+    inset 0 0 10px rgba(255,255,255,0.04);
+}
+
+.garage-wheel-front {
+  left: 73.5%;
+  top: 70.5%;
+  width: 60px;
+  height: 60px;
+}
+
+.garage-wheel-rear {
+  left: 40.5%;
+  top: 71.5%;
+  width: 54px;
+  height: 54px;
+}
+
+.garage-headlight-glow {
+  position: absolute;
+  left: 82%;
+  top: 49%;
+  width: 90px;
+  height: 26px;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: 999px;
+  opacity: 0.16;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(210, 170, 255, 0.95) 0%,
+    rgba(168, 85, 247, 0.45) 38%,
+    rgba(168, 85, 247, 0.12) 70%,
+    transparent 100%
+  );
+  filter: blur(10px);
+  transform: translate(-50%, -50%) rotate(-8deg);
+  animation: headlightPulse 3.2s ease-in-out infinite;
+  mix-blend-mode: screen;
+}
+
+.garage-headlight-glow::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 2px;
+  width: 46px;
+  height: 20px;
+  border-radius: 999px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(215, 185, 255, 0.85) 0%,
+    rgba(168, 85, 247, 0.28) 55%,
+    transparent 100%
+  );
+  filter: blur(6px);
+}
+
+.garage-headlight-glow::after {
+  content: "";
+  position: absolute;
+  left: 72%;
+  top: 50%;
+  width: 140px;
+  height: 18px;
+  transform: translateY(-50%) skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    rgba(210, 170, 255, 0.22) 0%,
+    rgba(168, 85, 247, 0.1) 45%,
+    transparent 100%
+  );
+  filter: blur(8px);
+}
+
+body.specials-mode .garage-car-wrap {
   opacity: 0;
+}
+
+@keyframes wheelTurn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes carMetallicSweep {
+  0% {
+    transform: translateX(-145%) skewX(-18deg);
+    opacity: 0.1;
+  }
+  12% {
+    opacity: 0.42;
+  }
+  24% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translateX(145%) skewX(-18deg);
+    opacity: 0.05;
+  }
+}
+
+@media (max-width: 768px) {
+  .garage-car-wrap {
+    left: 50%;
+    top: 66%;
+    width: 95vw;
+    min-width: 0;
+  }
+
+  .garage-car-img {
+    opacity: 0.22;
+  }
+
+  .garage-wheel-front {
+    width: 42px;
+    height: 42px;
+  }
+
+  .garage-wheel-rear {
+    width: 36px;
+    height: 36px;
+  }
+
+  .garage-ground-reflection {
+    width: 52%;
+    height: 6%;
+  }
+
+  .garage-headlight-glow {
+    width: 64px;
+    height: 18px;
+  }
+
+  .garage-exhaust-smoke {
+    width: 90px;
+    height: 56px;
+  }
 }
 
 @keyframes wheelTurn {
@@ -1434,14 +1502,14 @@ body.specials-mode .menu-item::before {
 <div class="bg-smoke-4"></div>
 
 <div class="garage-car-wrap" id="garageCarWrap">
+  <div class="garage-ground-reflection"></div>
+  <div class="garage-exhaust-smoke"></div>
   <img src="./car-silhouette.png" alt="" class="garage-car-img" />
+  <div class="garage-wheel-spin garage-wheel-front"></div>
+  <div class="garage-wheel-spin garage-wheel-rear"></div>
+  <div class="garage-headlight-glow"></div>
 </div>
-<div class="garage-wheel-spin garage-wheel-front"></div>
-<div class="garage-wheel-spin garage-wheel-rear"></div>
-<div class="garage-headlight-glow"></div>
-<div class="garage-ground-reflection"></div>
-<div class="garage-exhaust-smoke"></div>
-<div class="wrapper">
+</div><div class="wrapper">
 
     <div class="header">
       <div class="header-title">💜 Purple Haze Garage 💜</div>
@@ -1702,6 +1770,7 @@ function switchTab(event, tab) {
   event.target.classList.add("active");
   updateVisualMode();
   displayMenu();
+  updateGarageReactiveState();
 }
 
 function toggleAccessibilityMode() {
@@ -2032,11 +2101,37 @@ Where horsepower meets happy hour 💜`
 document.getElementById("customerName").addEventListener("input", updateOrderHeader);
 document.getElementById("mechanicName").addEventListener("input", updateMechanicDisplay);
 
+function updateGarageReactiveState() {
+  const wrap = document.getElementById("garageCarWrap");
+  if (!wrap) return;
+
+  wrap.classList.remove(
+    "garage-react-performance",
+    "garage-react-lighting",
+    "garage-react-paint",
+    "garage-react-wheels",
+    "garage-react-body",
+    "garage-react-misc"
+  );
+
+  if (currentTab === "performance") wrap.classList.add("garage-react-performance");
+  if (currentTab === "lighting") wrap.classList.add("garage-react-lighting");
+  if (currentTab === "paint") wrap.classList.add("garage-react-paint");
+  if (currentTab === "wheels") wrap.classList.add("garage-react-wheels");
+  if (currentTab === "body") wrap.classList.add("garage-react-body");
+  if (currentTab === "misc") wrap.classList.add("garage-react-misc");
+}
+
 updateOrderHeader();
 updateMechanicDisplay();
 updateOrderMeta();
 updateVisualMode();
 displayMenu();
+updateGarageReactiveState();
+
+window.addEventListener("load", updateGarageReactiveState);
+window.addEventListener("resize", updateGarageReactiveState);
+window.addEventListener("scroll", positionGarageEffects, { passive: true });
 </script>
 </body>
 </html>
