@@ -165,7 +165,7 @@
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.34;
+  opacity: 0.38;
   border-radius: 50%;
   background:
     radial-gradient(
@@ -180,7 +180,7 @@
       rgba(168, 85, 247, 0.08) 34%,
       transparent 70%
     );
-  filter: blur(16px);
+  filter: blur(20px);
   mix-blend-mode: screen;
 }
 
@@ -206,7 +206,7 @@
     rgba(168, 85, 247, 0.1) 45%,
     transparent 75%
   );
-  filter: blur(16px);
+  filter: blur(22px);
   animation: exhaustDrift 5.5s ease-in-out infinite;
 }
 
@@ -271,23 +271,6 @@
   z-index: 2;
 }
 
-.garage-car-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  opacity: 0.42;
-  filter:
-    brightness(0.28)
-    contrast(1.75)
-    drop-shadow(0 0 24px rgba(168, 85, 247, 0.45));
-  mix-blend-mode: screen;
-  animation: carFloat 8s ease-in-out infinite;
-  transform-origin: center center;
-  transition: transform 0.45s ease, filter 0.45s ease;
-  position: relative;
-  z-index: 1;
-}
-
 .garage-wheel-spin {
   position: absolute;
   width: 54px;
@@ -295,7 +278,7 @@
   pointer-events: none;
   z-index: 3;
   border-radius: 50%;
-  opacity: 0.58;
+  opacity: 0.28;
   mix-blend-mode: screen;
   transform: translate(-50%, -50%);
 }
@@ -327,14 +310,14 @@
     repeating-conic-gradient(
       from 0deg,
       rgba(255,255,255,0) 0deg 22deg,
-      rgba(210,170,255,1) 22deg 34deg,
+      rgba(210,170,255,0.82) 22deg 34deg,
       rgba(255,255,255,0) 34deg 60deg
     );
-  filter: blur(0.8px);
+  filter: blur(1px);
   animation: wheelTurn 1.3s linear infinite;
   box-shadow:
-    0 0 14px rgba(168, 85, 247, 0.34),
-    0 0 24px rgba(210, 170, 255, 0.2);
+    0 0 8px rgba(168, 85, 247, 0.18),
+    0 0 14px rgba(210, 170, 255, 0.10);
 }
 
 .garage-wheel-spin::after {
@@ -359,20 +342,20 @@
   position: absolute;
   left: 82%;
   top: 49%;
-  width: 90px;
-  height: 26px;
+  width: 120px;
+  height: 34px;
   pointer-events: none;
   z-index: 3;
   border-radius: 999px;
-  opacity: 0.3;
+  opacity: 0.34;
   background: radial-gradient(
     ellipse at center,
-    rgba(210, 170, 255, 0.95) 0%,
-    rgba(168, 85, 247, 0.45) 38%,
-    rgba(168, 85, 247, 0.12) 70%,
+    rgba(225, 190, 255, 1) 0%,
+    rgba(168, 85, 247, 0.55) 36%,
+    rgba(168, 85, 247, 0.16) 68%,
     transparent 100%
   );
-  filter: blur(10px);
+  filter: blur(12px);
   transform: translate(-50%, -50%) rotate(-8deg);
   animation: headlightPulse 3.2s ease-in-out infinite;
   mix-blend-mode: screen;
@@ -415,6 +398,24 @@
 body.specials-mode .garage-car-wrap {
   opacity: 0;
 }
+
+.garage-car-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.4;
+  filter:
+    brightness(0.24)
+    contrast(1.65)
+    drop-shadow(0 0 14px rgba(168, 85, 247, 0.22));
+  mix-blend-mode: screen;
+  animation: carFloat 8s ease-in-out infinite;
+  transform-origin: center center;
+  transition: transform 0.45s ease, filter 0.45s ease;
+  position: relative;
+  z-index: 1;
+}
+
 
 @keyframes wheelTurn {
   from { transform: rotate(0deg); }
@@ -680,11 +681,11 @@ body.specials-mode .menu-item::before {
 
 @keyframes headlightPulse {
   0%, 100% {
-    opacity: 0.22;
+    opacity: 0.24;
     transform: translate(-50%, -50%) rotate(-8deg) scale(1);
   }
   50% {
-    opacity: 0.38;
+    opacity: 0.42;
     transform: translate(-50%, -50%) rotate(-8deg) scale(1.08);
   }
 }
