@@ -500,34 +500,6 @@ body.specials-mode .garage-car-wrap {
   }
 }
 
-@keyframes wheelTurn {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes carMetallicSweep {
-  0% {
-    transform: translateX(-145%) skewX(-18deg);
-    opacity: 0.1;
-  }
-  12% {
-    opacity: 0.42;
-  }
-  24% {
-    opacity: 0.18;
-  }
-  100% {
-    transform: translateX(145%) skewX(-18deg);
-    opacity: 0.05;
-  }
-}
-
-@media (max-width: 768px) {
-  .garage-wheel-front {
-    width: 40px;
-    height: 40px;
-  }
-
   .garage-wheel-rear {
     width: 34px;
     height: 34px;
@@ -727,13 +699,13 @@ body.specials-mode .menu-item::before {
 
 @keyframes carFloat {
   0% {
-    transform: translate(var(--car-shift-x), calc(var(--car-shift-y) + 0px)) rotate(var(--car-tilt)) scale(calc(1.45 * var(--car-scale)));
+    transform: translate(0px, 0px) scale(1.45);
   }
   50% {
-    transform: translate(var(--car-shift-x), calc(var(--car-shift-y) - 6px)) rotate(var(--car-tilt)) scale(calc(1.45 * var(--car-scale)));
+    transform: translate(0px, -6px) scale(1.45);
   }
   100% {
-    transform: translate(var(--car-shift-x), calc(var(--car-shift-y) + 0px)) rotate(var(--car-tilt)) scale(calc(1.45 * var(--car-scale)));
+    transform: translate(0px, 0px) scale(1.45);
   }
 }
 
@@ -1509,7 +1481,7 @@ body.specials-mode .menu-item::before {
   <div class="garage-wheel-spin garage-wheel-rear"></div>
   <div class="garage-headlight-glow"></div>
 </div>
-</div><div class="wrapper">
+</div class="wrapper">
 
     <div class="header">
       <div class="header-title">💜 Purple Haze Garage 💜</div>
@@ -2131,7 +2103,6 @@ updateGarageReactiveState();
 
 window.addEventListener("load", updateGarageReactiveState);
 window.addEventListener("resize", updateGarageReactiveState);
-window.addEventListener("scroll", positionGarageEffects, { passive: true });
 </script>
 </body>
 </html>
