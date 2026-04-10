@@ -156,36 +156,94 @@
     filter 0.45s ease;
 }
 
-.garage-car-sweep {
+.garage-curve-sweep {
   position: absolute;
-  left: 16%;
-  top: 36%;
-  width: 64%;
-  height: 9%;
   pointer-events: none;
   z-index: 2;
   overflow: hidden;
-  transform: skewX(-18deg);
+  mix-blend-mode: screen;
 }
 
-.garage-car-sweep::before {
+.garage-curve-sweep::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    transparent 44%,
-    rgba(255,255,255,0.08) 47%,
-    rgba(255,255,255,0.24) 50%,
-    rgba(255,255,255,0.08) 53%,
-    transparent 57%,
+    transparent 42%,
+    rgba(255,255,255,0.04) 47%,
+    rgba(255,255,255,0.18) 50%,
+    rgba(255,255,255,0.04) 53%,
+    transparent 58%,
     transparent 100%
   );
-  mix-blend-mode: screen;
-  filter: blur(0.3px);
   transform: translateX(-140%);
-  animation: carMetallicSweepOnly 5.8s linear infinite;
+  filter: blur(0.4px);
+  animation: carCurveSweep 6.2s linear infinite;
+}
+
+/* hood / upper body highlight */
+.garage-curve-sweep-top {
+  left: 10%;
+  top: 34%;
+  width: 54%;
+  height: 12%;
+  transform: rotate(-8deg);
+  clip-path: ellipse(48% 34% at 50% 50%);
+  opacity: 0.9;
+}
+
+.garage-curve-sweep-top::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 44%,
+    rgba(255,255,255,0.03) 47%,
+    rgba(255,255,255,0.16) 50%,
+    rgba(255,255,255,0.03) 53%,
+    transparent 58%,
+    transparent 100%
+  );
+}
+
+/* door / side body line highlight */
+.garage-curve-sweep-mid {
+  left: 36%;
+  top: 56%;
+  width: 34%;
+  height: 7%;
+  transform: rotate(-6deg);
+  clip-path: ellipse(48% 28% at 50% 50%);
+  opacity: 0.75;
+}
+
+.garage-curve-sweep-mid::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 44%,
+    rgba(255,255,255,0.025) 47%,
+    rgba(255,255,255,0.11) 50%,
+    rgba(255,255,255,0.025) 53%,
+    transparent 58%,
+    transparent 100%
+  );
+  animation-delay: 0.8s;
+}
+
+@keyframes carCurveSweep {
+  0% {
+    transform: translateX(-140%);
+    opacity: 0.1;
+  }
+  18% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateX(140%);
+    opacity: 0.1;
+  }
 }
 
 .garage-ground-reflection {
@@ -444,20 +502,6 @@
 @keyframes wheelTurn {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-@keyframes carMetallicSweepOnly {
-  0% {
-    transform: translateX(-140%);
-    opacity: 0.2;
-  }
-  20% {
-    opacity: 0.95;
-  }
-  100% {
-    transform: translateX(140%);
-    opacity: 0.2;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1460,7 +1504,8 @@ body.specials-mode .menu-item::before {
   <div class="garage-ground-reflection"></div>
   <div class="garage-exhaust-smoke"></div>
   <img src="./car-silhouette.png" alt="" class="garage-car-img" />
-  <div class="garage-car-sweep"></div>
+  <div class="garage-curve-sweep garage-curve-sweep-top"></div>
+  <div class="garage-curve-sweep garage-curve-sweep-mid"></div>
   <div class="garage-wheel-spin garage-wheel-front"></div>
   <div class="garage-wheel-spin garage-wheel-rear"></div>
   <div class="garage-headlight-glow"></div>
