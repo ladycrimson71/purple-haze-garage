@@ -1689,7 +1689,7 @@ function updateVisualMode() {
 }
 
 function createConstellation() {
-  if (!isSpecialsMode()) return;
+  if (!isSpecialsMode() && !document.body.classList.contains("garage-mode")) return;
 
   const patterns = [
     { name: "Cancer", svg: `<svg viewBox="0 0 120 120" fill="none"><line x1="18" y1="78" x2="34" y2="60" stroke="rgba(255,235,150,1)" stroke-width="1.6"/><line x1="34" y1="60" x2="54" y2="64" stroke="rgba(255,235,150,1)" stroke-width="1.6"/><line x1="54" y1="64" x2="70" y2="46" stroke="rgba(255,235,150,1)" stroke-width="1.6"/><line x1="70" y1="46" x2="92" y2="52" stroke="rgba(255,235,150,1)" stroke-width="1.6"/><circle cx="18" cy="78" r="2.8" fill="rgba(255,255,200,1)"/><circle cx="34" cy="60" r="2.8" fill="rgba(255,255,200,1)"/><circle cx="54" cy="64" r="2.8" fill="rgba(255,255,200,1)"/><circle cx="70" cy="46" r="2.8" fill="rgba(255,255,200,1)"/><circle cx="92" cy="52" r="2.8" fill="rgba(255,255,200,1)"/></svg>` },
@@ -1705,8 +1705,25 @@ function createConstellation() {
   const constellation = document.createElement("div");
   constellation.className = "constellation";
   constellation.innerHTML = picked.svg;
-  constellation.style.left = Math.random() * (window.innerWidth - 120) + "px";
-  constellation.style.top = Math.random() * (window.innerHeight - 120) + "px";
+
+  let left, top;
+  const carZoneLeft = window.innerWidth * 0.22;
+  const carZoneRight = window.innerWidth * 0.88;
+  const carZoneTop = window.innerHeight * 0.33;
+  const carZoneBottom = window.innerHeight * 0.80;
+
+  do {
+    left = Math.random() * (window.innerWidth - 120);
+    top = Math.random() * (window.innerHeight - 120);
+  } while (
+    left > carZoneLeft &&
+    left < carZoneRight &&
+    top > carZoneTop &&
+    top < carZoneBottom
+  );
+
+  constellation.style.left = `${left}px`;
+  constellation.style.top = `${top}px`;
   document.body.appendChild(constellation);
   setTimeout(() => constellation.remove(), 3800);
 }
@@ -1714,8 +1731,29 @@ function createConstellation() {
 function createTwinkleStar(x = null, y = null) {
   const star = document.createElement("div");
   star.className = "twinkle-star";
-  const left = x !== null ? x : Math.random() * window.innerWidth;
-  const top = y !== null ? y : Math.random() * window.innerHeight;
+
+  let left, top;
+
+  if (x !== null && y !== null) {
+    left = x;
+    top = y;
+  } else {
+    const carZoneLeft = window.innerWidth * 0.22;
+    const carZoneRight = window.innerWidth * 0.88;
+    const carZoneTop = window.innerHeight * 0.33;
+    const carZoneBottom = window.innerHeight * 0.80;
+
+    do {
+      left = Math.random() * window.innerWidth;
+      top = Math.random() * window.innerHeight;
+    } while (
+      left > carZoneLeft &&
+      left < carZoneRight &&
+      top > carZoneTop &&
+      top < carZoneBottom
+    );
+  }
+
   star.style.left = `${left}px`;
   star.style.top = `${top}px`;
   document.body.appendChild(star);
@@ -1884,10 +1922,10 @@ function displayMenu() {
   menuItems.innerHTML = items.map(item => {
     const isRaffle = ["stardust-entry", "galaxy-draw", "celestial-jackpot"].includes(item.id);
     const isCelestial = item.id === "celestial-jackpot";
-    const cardClasses = ["menu-item", isRaffle ? "raffle-item" : "", isCelestial ? "celestial-jackpot" : ""].filter(Boolean).join(" ");
-    const hoverAction = isRaffle
-      ? `onmouseenter="raffleHoverTwinkle(event, '${item.id}')"`
-      : `onmouseenter="garageHoverSparkle(event)"`;
+    const cardClasses = ["menu-item", isRaffle ? "raffle-item" : "", isCelestial ? "celestial-jackpot" : ""]
+      .filter(Boolean)
+      .join(" ");
+    const hoverAction = "";
 
     return `
       <div class="${cardClasses}" ${hoverAction}>
