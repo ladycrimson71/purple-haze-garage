@@ -158,10 +158,10 @@
 
 .garage-car-sweep {
   position: absolute;
-  left: 10%;
-  top: 43%;
-  width: 72%;
-  height: 14%;
+  left: 16%;
+  top: 36%;
+  width: 64%;
+  height: 9%;
   pointer-events: none;
   z-index: 2;
   overflow: hidden;
@@ -175,17 +175,17 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    transparent 42%,
-    rgba(255,255,255,0.10) 47%,
-    rgba(255,255,255,0.32) 50%,
-    rgba(255,255,255,0.10) 53%,
-    transparent 58%,
+    transparent 44%,
+    rgba(255,255,255,0.08) 47%,
+    rgba(255,255,255,0.24) 50%,
+    rgba(255,255,255,0.08) 53%,
+    transparent 57%,
     transparent 100%
   );
   mix-blend-mode: screen;
-  filter: blur(0.5px);
+  filter: blur(0.3px);
   transform: translateX(-140%);
-  animation: carMetallicSweepOnly 5.2s linear infinite;
+  animation: carMetallicSweepOnly 5.8s linear infinite;
 }
 
 .garage-ground-reflection {
@@ -1709,8 +1709,8 @@ function createConstellation() {
   let left, top;
   const carZoneLeft = window.innerWidth * 0.08;
   const carZoneRight = window.innerWidth * 0.96;
-  const carZoneTop = window.innerHeight * 0.30;
-  const carZoneBottom = window.innerHeight * 0.70;
+  const carZoneTop = window.innerHeight * 0.35;
+  const carZoneBottom = window.innerHeight * 0.80;
 
   do {
     left = Math.random() * (window.innerWidth - 120);
@@ -1740,8 +1740,8 @@ function createTwinkleStar(x = null, y = null) {
   } else {
     const carZoneLeft = window.innerWidth * 0.08;
     const carZoneRight = window.innerWidth * 0.96;
-    const carZoneTop = window.innerHeight * 0.30;
-    const carZoneBottom = window.innerHeight * 0.70;
+    const carZoneTop = window.innerHeight * 0.35;
+    const carZoneBottom = window.innerHeight * 0.80;
 
     do {
       left = Math.random() * window.innerWidth;
